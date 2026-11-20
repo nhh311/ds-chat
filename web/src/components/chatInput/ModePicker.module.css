@@ -1,0 +1,183 @@
+/* 移动端：一个胶囊显示当前模式，深度思考时旁边再多一个强度胶囊 */
+.pills {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  flex-shrink: 0;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  flex-shrink: 0;
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 16px;
+  border: 1px solid var(--dsw-alias-border-l2);
+  background-color: transparent;
+  color: var(--dsw-alias-label-primary);
+  font: var(--dsw-font-s-14);
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.pill:active {
+  background-color: var(--dsw-alias-interactive-bg-hover);
+}
+
+.pillOpen {
+  border-color: var(--dsw-alias-brand-primary);
+  color: var(--dsw-alias-brand-primary);
+}
+
+/* 强度胶囊更内敛，避免看起来像第二个主按钮 */
+.effortPill {
+  padding: 0 8px;
+  color: var(--dsw-alias-label-secondary);
+}
+
+/* 窄机型（≤360px）：两个胶囊都收一点内边距，保证发送按钮不被挤出屏幕 */
+@media (max-width: 360px) {
+  .pill {
+    padding: 0 8px;
+    gap: 0;
+  }
+
+  .effortPill {
+    padding: 0 6px;
+  }
+}
+
+/* 桌面端保持三个平铺按钮 */
+.desktopToggles {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.desktopEffort {
+  display: flex;
+  align-items: center;
+}
+
+.toggle {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 18px;
+  border: 1px solid var(--dsw-alias-border-l2);
+  background-color: transparent;
+  color: var(--dsw-alias-label-primary);
+  font: var(--dsw-font-s-14);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.toggle:hover {
+  background-color: var(--dsw-alias-interactive-bg-hover);
+}
+
+.toggleSelected {
+  border-color: var(--dsw-alias-brand-primary);
+  color: var(--dsw-alias-brand-primary);
+}
+
+/* 浮层：fixed 定位，不参与输入框那一行的布局，因此不会挤走其它按钮 */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  background-color: transparent;
+}
+
+.panel {
+  position: fixed;
+  z-index: 901;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 232px;
+  max-height: 60vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 8px;
+  border-radius: 16px;
+  border: 1px solid var(--dsw-alias-border-l2);
+  background-color: var(--dsw-specific-menu, var(--dsw-alias-bg-base));
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.12),
+    0 2px 6px rgba(0, 0, 0, 0.08);
+  animation: panelIn 0.12s ease-out;
+}
+
+@keyframes panelIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.panelTitle {
+  padding: 4px 8px 6px;
+  color: var(--dsw-alias-label-tertiary);
+  font: var(--dsw-font-s-12);
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px;
+  border: 0;
+  border-radius: 10px;
+  background-color: transparent;
+  color: var(--dsw-alias-label-primary);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.option:active,
+.option:hover {
+  background-color: var(--dsw-alias-interactive-bg-hover);
+}
+
+.optionActive {
+  color: var(--dsw-alias-brand-primary);
+}
+
+.optionText {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.optionLabel {
+  font: var(--dsw-font-s-strong-14);
+}
+
+.optionHint {
+  color: var(--dsw-alias-label-tertiary);
+  font: var(--dsw-font-s-12);
+  line-height: 1.35;
+}

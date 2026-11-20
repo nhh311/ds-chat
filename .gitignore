@@ -1,0 +1,22 @@
+# 依赖与构建产物
+node_modules/
+dist/
+build/
+.pnpm-store/
+.cache/
+
+# 日志与环境
+*.log
+.env
+.env.*
+!.env.example
+
+# 本地产物
+*.apk
+*.aab
+
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

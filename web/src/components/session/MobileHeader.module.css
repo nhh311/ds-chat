@@ -1,0 +1,53 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  /* 刘海屏上安全区由 .frame 的 padding 处理，这里只留抓手自己的呼吸空间 */
+  padding: 0 8px 2px;
+}
+
+/* 顶部浅色横杠：既像抓手，也把内容与状态栏隔开 */
+.grabber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.grabberBar {
+  display: block;
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--dsw-alias-border-l2);
+  opacity: 0.7;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  height: 48px;
+}
+
+.title {
+  flex: 1;
+  min-width: 0;
+  margin: 0 6px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font: var(--dsw-font-s-strong-14);
+  color: var(--dsw-alias-label-primary);
+}
+
+/* 模型选择与「+」在一起，永不被标题挤压 */
+.trailing {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 2px;
+  margin-left: auto;
+}

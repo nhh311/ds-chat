@@ -1,0 +1,13 @@
+* text=auto
+
+*.sh    text eol=lf
+*.java  text eol=lf
+*.md    text eol=lf
+*.ts    text eol=lf
+*.tsx   text eol=lf
+*.yml   text eol=lf
+
+*.png binary
+*.jpg binary
+*.apk binary
+*.keystore binary
