@@ -45,6 +45,13 @@ cd android
 ./build-apk.sh
 ```
 
+Windows 上没有 Git Bash（或者不想为一次打包装一个）时，用步骤完全一致的 PowerShell 版：
+
+```powershell
+cd android
+powershell -ExecutionPolicy Bypass -File .\build-apk.ps1
+```
+
 脚本按顺序做这些事：
 
 1. `web/dist` 拷进 `build/assetsroot/assets/`，页面从 `file:///android_asset/index.html` 打开
@@ -55,7 +62,7 @@ cd android
 6. `zipalign -p 4` 对齐，`apksigner` 用 `debug.keystore` 签名
 7. `apksigner verify --print-certs` 打印证书并 `ls -l` 产物
 
-产物在 `android/build/dsk-chat-0.3.9.apk`。
+产物在 `android/build/dsk-chat-0.3.10.apk`（2,030,945 字节，SHA-256 `7F195D11AFF745974C0B5437982ED857AE92955A10D3041AFE15541F1B8B7C91`；`build/` 不入库）。
 
 ### 工具链路径
 
@@ -77,19 +84,19 @@ JAVA_HOME=/usr/lib/jvm/temurin-17-jdk \
 自己换一把也行，但那样就装不到官方发布的版本上了，得先卸载。签名证书指纹：
 
 ```bash
-apksigner verify --print-certs android/build/dsk-chat-0.3.9.apk
+apksigner verify --print-certs android/build/dsk-chat-0.3.10.apk
 ```
 
 ### 安装与验证
 
 ```bash
-adb install -r android/build/dsk-chat-0.3.9.apk
+adb install -r android/build/dsk-chat-0.3.10.apk
 adb logcat -s DSKCHAT          # 原生侧日志
 ```
 
 ## 发版清单
 
-1. 改 `android/build-apk.sh` 里的 `VERSION_CODE` / `VERSION_NAME`，以及 `AndroidManifest.xml` 里的同名属性（清单里的值会被 link 参数覆盖，但保持一致更清楚）
+1. 改 `android/build-apk.sh` 与 `android/build-apk.ps1` 里的 `VERSION_CODE` / `VERSION_NAME` / `APP_NAME`，以及 `AndroidManifest.xml` 里的同名属性（清单里的值会被 link 参数覆盖，但保持一致更清楚）
 2. 改 `web/package.json` 的 `version`（它会写进 HTML 的 `application-version` meta）与 `package-lock.json` 顶部的 `version`
 3. 更新 `CHANGELOG.md`，构建 APK
 4. 计算 SHA-256 并写进 Release 说明：`certutil -hashfile <apk> SHA256`（Windows）或 `sha256sum`

@@ -10,17 +10,17 @@ set -euo pipefail
 cd "$(dirname "$0")"
 
 # 工具链路径：默认按本项目的开发目录摆放，也可以用环境变量指到自己的 SDK / JDK
-BT=${ANDROID_BUILD_TOOLS:-../.toolchain/android-sdk/build-tools/35.0.0}
-AJ=${ANDROID_JAR:-../.toolchain/android-sdk/platforms/android-35/android.jar}
-JDK=${JAVA_HOME:-../.toolchain/jdk}
-APP_NAME=dsk-chat-0.3.9
+BT=${ANDROID_BUILD_TOOLS:-../../.toolchain/android-sdk/build-tools/35.0.0}
+AJ=${ANDROID_JAR:-../../.toolchain/android-sdk/platforms/android-35/android.jar}
+JDK=${JAVA_HOME:-../../.toolchain/jdk}
+APP_NAME=dsk-chat-0.3.10
 
 for f in "$BT/aapt2.exe" "$AJ" "$JDK/bin/javac.exe"; do
   [ -e "$f" ] || { echo "缺少工具链：$f（用 ANDROID_BUILD_TOOLS / ANDROID_JAR / JAVA_HOME 指定）"; exit 1; }
 done
 [ -f ../web/dist/index.html ] || { echo "缺少前端产物：先 cd ../web && pnpm build"; exit 1; }
-VERSION_CODE=14
-VERSION_NAME=0.3.9
+VERSION_CODE=15
+VERSION_NAME=0.3.10
 
 rm -rf build
 mkdir -p build/classes build/dex build/apk build/assetsroot/assets build/res

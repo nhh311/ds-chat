@@ -16,9 +16,9 @@
 <p align="center">
   <img alt="platform" src="https://img.shields.io/badge/Android-7.0%2B-3DDC84?logo=android&logoColor=white">
   <img alt="apk size" src="https://img.shields.io/badge/APK-2.0%20MB-2563EB">
-  <img alt="version" src="https://img.shields.io/badge/version-0.3.9-F59E0B">
+  <img alt="version" src="https://img.shields.io/badge/version-0.3.10-F59E0B">
   <img alt="license" src="https://img.shields.io/badge/license-MIT-111827">
-  <img alt="stars" src="https://img.shields.io/github/stars/__OWNER__/__REPO__?logo=github">
+  <img alt="stars" src="https://img.shields.io/github/stars/nhh311/ds-chat?logo=github">
 </p>
 
 ## 先说清楚：这不是官方 App
@@ -26,7 +26,7 @@
 DS Chat 是一个**个人开发的第三方客户端**。它与杭州深度求索人工智能基础技术研究有限公司（DeepSeek）没有隶属、合作或背书关系，不是官方产品；不分发、不再打包任何官方安装包，界面也不是官方 App 的复刻。
 
 - **代码从哪来**：`web/` 是在 DeepSeek **开源**的 [chat-demo](https://github.com/deepseek-ai/chat-demo)（MIT）上重写的，Android 端是自己写的 WebView 壳。全部源码都在这个仓库里，可以逐行对照。
-- **商标怎么用**：名称里的 "DS"、界面与图标里的鲸鱼，只用来表明"这个软件连的是 DeepSeek 的接口"，属于识别性使用；"DeepSeek"、"深度求索" 及鲸鱼标识归深度求索所有，本项目不主张任何权利。
+- **商标怎么用**：名称里的 "DS" 只用来表明"这个软件连的是 DeepSeek 的接口"，属于描述性使用；"DeepSeek"、"深度求索" 及其鲸鱼标识归深度求索所有，本项目不主张任何权利。界面与图标里**没有**使用官方标识——0.3.10 起连首页的鲸鱼也删掉了，图标换成了一个中性的对话气泡。
 - **你可以怎么用**：MIT 许可，可以 fork、改名、换图标、商用。如果重新发布，请换掉名称与图标，别让人误以为是官方产品。
 - **出问题找谁**：找这个仓库，不要找官方客服——官方没有参与这个项目。
 
@@ -46,7 +46,7 @@ DS Chat 是一个自己动手写的第三方客户端：不用自建后端、不
 
 | 项目 | 值 |
 | --- | --- |
-| 版本 | 0.3.9（versionCode 14） |
+| 版本 | 0.3.10（versionCode 15） |
 | 安装包 | 2.0 MB，Android 7.0+（minSdk 24 / targetSdk 35） |
 | 模型 | Flash / V4 Pro，均为 1M 上下文 |
 | 协议 | Anthropic 兼容 Messages：`POST {服务地址}/anthropic/v1/messages` |
@@ -59,17 +59,17 @@ DS Chat 是一个自己动手写的第三方客户端：不用自建后端、不
 | 对话 | 模式与思考强度 | 附件 |
 | :--: | :--: | :--: |
 | <img src="screenshots/01-welcome.png" width="230"> | <img src="screenshots/02-mode-panel.png" width="230"> | <img src="screenshots/22-attach-sheet.png" width="230"> |
-| 输入框下方的状态条：轮/步、token 总量、上下文环形指示 | 三种模式平铺，选了深度思考才出现强度胶囊 | 点回形针先问一句：上传文件，还是从相册选 |
+| 首页：底部一行状态条（轮/步、token 总量、上下文环） | 三种模式平铺，选了深度思考才出现强度胶囊 | 点回形针先问一句：上传文件，还是从相册选 |
 
 | Token 用量 | 会话统计 | 隐私 |
 | :--: | :--: | :--: |
 | <img src="screenshots/16-usage-panel.png" width="230"> | <img src="screenshots/18-stats-panel.png" width="230"> | <img src="screenshots/27-privacy-mobile.png" width="230"> |
 | 缓存命中率、未缓存输入 / 缓存读取 / 输出、上下文占用 | 轮/步、模型用时、TTFT、TPS、上下文三段分布 | 哪些请求会离开手机、训练开关在哪、本机占用 |
 
-| 桌面端 | 扩展：技能与 MCP |
-| :--: | :--: |
-| <img src="screenshots/04-desktop.png" width="440"> | <img src="screenshots/05-extras.png" width="440"> |
-| 宽屏是「边栏 + 对话」两栏，模式与强度平铺在输入框里 | 技能可以导入 `.md` / JSON，MCP 填流式 HTTP 地址，可测连接 |
+| 桌面端 | 扩展：技能与 MCP | 图标 |
+| :--: | :--: | :--: |
+| <img src="screenshots/04-desktop.png" width="420"> | <img src="screenshots/05-extras.png" width="420"> | <img src="screenshots/icon-512.png" width="110"> |
+| 宽屏是「边栏 + 对话」两栏，模式平铺在输入框里 | 技能可以导入 `.md` / JSON，MCP 填流式 HTTP 地址，可测连接 | 中性的对话气泡，不带任何官方标识 |
 
 > 截图来自移动端 824×1830、桌面端 2560×1800 视口下的真实渲染，没有做设计稿美化。
 
@@ -109,12 +109,12 @@ DS Chat 是一个自己动手写的第三方客户端：不用自建后端、不
 
 ## 安装
 
-从 [Releases](https://github.com/__OWNER__/__REPO__/releases) 下 `ds-chat-0.3.9.apk`（2.0 MB）：
+从 [Releases](https://github.com/nhh311/ds-chat/releases) 下 `ds-chat-0.3.10.apk`（2.0 MB）：
 
 ```
-文件名    ds-chat-0.3.9.apk
-大小      2,047,331 字节
-SHA-256   6C3DE4130255705468A02C113F634A86ECA4D34637CC510F8C4F48122F240251
+文件名    ds-chat-0.3.10.apk
+大小      2,030,945 字节
+SHA-256   7F195D11AFF745974C0B5437982ED857AE92955A10D3041AFE15541F1B8B7C91
 ```
 
 - Android 7.0（API 24）及以上；targetSdk 35
@@ -147,6 +147,15 @@ Android：
 cd android
 ./build-apk.sh    # 需要 Android SDK build-tools 35.0.0 与 JDK，见 docs/BUILD.md
 ```
+
+Windows 上不想装 Git Bash 的话，同一个脚本有 PowerShell 版（步骤完全一致）：
+
+```powershell
+cd android
+powershell -ExecutionPolicy Bypass -File .\build-apk.ps1
+```
+
+两个脚本都会打印 APK 的字节数与 SHA-256，可以直接和上面 Release 里的数字对照。
 
 完整的前置依赖、签名与验证步骤见 [docs/BUILD.md](docs/BUILD.md)。
 
@@ -201,14 +210,14 @@ App 只会发四类请求，全部发给你填的服务地址：
 
 见 [CHANGELOG.md](CHANGELOG.md)。最近三版：
 
+- **0.3.10** 去掉首页与图标里的官方标识，换成一个中性的对话气泡图标（仓库里重新出包）
 - **0.3.9** 设置里新增"隐私"分组：数据去了哪里、训练开关在哪、本机占用与一键清除
 - **0.3.8** 语音整理：转写完先让模型过一遍，去口头语、补标点、改同音错字
-- **0.3.7** 点回形针先问"上传文件还是选相册"，相册支持多选；点附件变成预览
 
 ## 致谢
 
 - 前端源自 DeepSeek 开源的 [chat-demo](https://github.com/deepseek-ai/chat-demo)（MIT），界面与交互的底子来自那里
-- 鲸鱼图标与 "DeepSeek" 名称归杭州深度求索所有
+- "DeepSeek"、"深度求索" 名称与鲸鱼标识归杭州深度求索所有；本项目不使用这些标识，仅以文字指明所连的接口
 - 头图由 MiniMax-H3-Image 生成
 
 ## 许可

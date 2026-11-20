@@ -16,9 +16,9 @@
 <p align="center">
   <img alt="platform" src="https://img.shields.io/badge/Android-7.0%2B-3DDC84?logo=android&logoColor=white">
   <img alt="apk size" src="https://img.shields.io/badge/APK-2.0%20MB-2563EB">
-  <img alt="version" src="https://img.shields.io/badge/version-0.3.9-F59E0B">
+  <img alt="version" src="https://img.shields.io/badge/version-0.3.10-F59E0B">
   <img alt="license" src="https://img.shields.io/badge/license-MIT-111827">
-  <img alt="stars" src="https://img.shields.io/github/stars/__OWNER__/__REPO__?logo=github">
+  <img alt="stars" src="https://img.shields.io/github/stars/nhh311/ds-chat?logo=github">
 </p>
 
 ## First things first: this is not an official app
@@ -26,7 +26,7 @@
 DS Chat is a **third-party client written by one person**. It is not affiliated with, endorsed by, or connected to Hangzhou DeepSeek Artificial Intelligence Co., Ltd. It is not an official product; it does not redistribute or repackage any official binary, and its interface is not a copy of the official app.
 
 - **Where the code comes from.** `web/` is a rewrite on top of DeepSeek's **open-source** [chat-demo](https://github.com/deepseek-ai/chat-demo) (MIT). The Android side is a WebView shell written from scratch. Every line is in this repository.
-- **How the marks are used.** "DS" and the whale are used only to say *which service this app talks to* — nominative use. "DeepSeek", "深度求索" and the whale mark belong to DeepSeek; this project claims no rights over them.
+- **How the marks are used.** "DS" only says *which service this app talks to* — descriptive use. "DeepSeek", "深度求索" and the whale mark belong to DeepSeek; this project claims no rights over them. The UI and the icon carry **no** official marks: as of 0.3.10 even the whale on the home screen is gone, and the launcher icon is a neutral speech bubble.
 - **What you may do with it.** MIT: fork it, rename it, change the icon, ship it commercially. If you redistribute it, change the name and the icon so nobody mistakes it for the official product.
 - **Who to ask for support.** This repository — not DeepSeek support. They have nothing to do with this project.
 
@@ -46,7 +46,7 @@ DS Chat is a third-party client that turns DeepSeek's open API into a phone app:
 
 | | |
 | --- | --- |
-| Version | 0.3.9 (versionCode 14) |
+| Version | 0.3.10 (versionCode 15) |
 | Package | 2.0 MB, Android 7.0+ (minSdk 24 / targetSdk 35) |
 | Models | Flash / V4 Pro, both with a 1M-token context |
 | Protocol | Anthropic-compatible Messages: `POST {server}/anthropic/v1/messages` |
@@ -59,17 +59,17 @@ DS Chat is a third-party client that turns DeepSeek's open API into a phone app:
 | Chat | Modes & effort | Attachments |
 | :--: | :--: | :--: |
 | <img src="screenshots/01-welcome.png" width="230"> | <img src="screenshots/02-mode-panel.png" width="230"> | <img src="screenshots/22-attach-sheet.png" width="230"> |
-| Status line under the composer: rounds/steps, tokens, context ring | Modes laid out flat; the effort capsule appears only in deep thinking | The paperclip asks first: upload a file, or pick from the gallery |
+| Home: one status line at the bottom (rounds/steps, tokens, context ring) | Modes laid out flat; the effort capsule appears only in deep thinking | The paperclip asks first: upload a file, or pick from the gallery |
 
 | Token usage | Session stats | Privacy |
 | :--: | :--: | :--: |
 | <img src="screenshots/16-usage-panel.png" width="230"> | <img src="screenshots/18-stats-panel.png" width="230"> | <img src="screenshots/27-privacy-mobile.png" width="230"> |
 | Cache hit rate, uncached input / cache read / output, context usage | Rounds/steps, model time, TTFT, TPS, context breakdown | Which requests leave the phone, where the training toggle lives, local storage |
 
-| Desktop | Extensions: skills and MCP |
-| :--: | :--: |
-| <img src="screenshots/04-desktop.png" width="440"> | <img src="screenshots/05-extras.png" width="440"> |
-| Wide screens get a sidebar + conversation layout | Import skills as `.md` / JSON; add a streamable HTTP MCP server and test it |
+| Desktop | Extensions: skills and MCP | Icon |
+| :--: | :--: | :--: |
+| <img src="screenshots/04-desktop.png" width="420"> | <img src="screenshots/05-extras.png" width="420"> | <img src="screenshots/icon-512.png" width="110"> |
+| Wide screens get a sidebar + conversation layout | Import skills as `.md` / JSON; add a streamable HTTP MCP server and test it | A neutral speech bubble, no official marks |
 
 > Screenshots are real renders at 824×1830 (mobile) and 2560×1800 (desktop) — no mockups.
 
@@ -108,12 +108,12 @@ DS Chat is a third-party client that turns DeepSeek's open API into a phone app:
 
 ## Install
 
-Download `ds-chat-0.3.9.apk` (2.0 MB) from [Releases](https://github.com/__OWNER__/__REPO__/releases).
+Download `ds-chat-0.3.10.apk` (2.0 MB) from [Releases](https://github.com/nhh311/ds-chat/releases).
 
 ```
-file      ds-chat-0.3.9.apk
-size      2,047,331 bytes
-SHA-256   6C3DE4130255705468A02C113F634A86ECA4D34637CC510F8C4F48122F240251
+file      ds-chat-0.3.10.apk
+size      2,030,945 bytes
+SHA-256   7F195D11AFF745974C0B5437982ED857AE92955A10D3041AFE15541F1B8B7C91
 ```
 
 - Android 7.0 (API 24) and up; targetSdk 35
@@ -146,6 +146,15 @@ Android:
 cd android
 ./build-apk.sh    # needs Android SDK build-tools 35.0.0 and a JDK; see docs/BUILD.md
 ```
+
+On Windows without Git Bash, the same steps exist as a PowerShell script:
+
+```powershell
+cd android
+powershell -ExecutionPolicy Bypass -File .\build-apk.ps1
+```
+
+Both scripts print the APK's byte size and SHA-256 so you can compare against the numbers above.
 
 Prerequisites, signing and verification steps are in [docs/BUILD.md](docs/BUILD.md).
 
@@ -198,14 +207,14 @@ See [docs/PRIVACY.md](docs/PRIVACY.md) and the [DeepSeek privacy policy](https:/
 
 See [CHANGELOG.md](CHANGELOG.md). Last three releases:
 
+- **0.3.10** dropped the official marks from the home screen and the launcher; rebuilt with a neutral speech-bubble icon
 - **0.3.9** new Privacy section in settings: where data goes, where the training toggle lives, local usage and one-tap clearing
 - **0.3.8** voice clean-up: the transcript goes through the model once — filler words out, punctuation in, homophones fixed
-- **0.3.7** the paperclip asks "file or gallery" first, multi-select in the gallery, tapping an attachment previews it
 
 ## Credits
 
 - The frontend is based on DeepSeek's open-source [chat-demo](https://github.com/deepseek-ai/chat-demo) (MIT); much of the UI and interaction originates there
-- The whale icon and the "DeepSeek" name belong to DeepSeek
+- "DeepSeek", "深度求索" and the whale mark belong to DeepSeek. This project uses none of those marks; text mentions only identify the API it talks to
 - Hero image generated with MiniMax-H3-Image
 
 ## License
