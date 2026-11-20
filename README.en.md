@@ -113,7 +113,7 @@ Download `ds-chat-0.3.10.apk` (2.0 MB) from [Releases](https://github.com/nhh311
 ```
 file      ds-chat-0.3.10.apk
 size      2,030,945 bytes
-SHA-256   7F195D11AFF745974C0B5437982ED857AE92955A10D3041AFE15541F1B8B7C91
+SHA-256   E16B6278094A6F847B2C7A15CA6FC7DBDBBBCC74399B420D0D09A560BCAD3F8A
 ```
 
 - Android 7.0 (API 24) and up; targetSdk 35

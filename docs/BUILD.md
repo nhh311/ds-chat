@@ -62,7 +62,7 @@ powershell -ExecutionPolicy Bypass -File .\build-apk.ps1
 6. `zipalign -p 4` 对齐，`apksigner` 用 `debug.keystore` 签名
 7. `apksigner verify --print-certs` 打印证书并 `ls -l` 产物
 
-产物在 `android/build/dsk-chat-0.3.10.apk`（2,030,945 字节，SHA-256 `7F195D11AFF745974C0B5437982ED857AE92955A10D3041AFE15541F1B8B7C91`；`build/` 不入库）。
+产物在 `android/build/dsk-chat-0.3.10.apk`（2,030,945 字节，SHA-256 `E16B6278094A6F847B2C7A15CA6FC7DBDBBBCC74399B420D0D09A560BCAD3F8A`；`build/` 不入库）。
 
 ### 工具链路径
 

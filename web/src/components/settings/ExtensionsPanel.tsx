@@ -274,11 +274,9 @@ const McpSection = () => {
 
   const remove = (id: string) => {
     persist(servers.filter((server) => server.id !== id))
-    setResults((current) => {
-      const next = { ...current }
-      delete next[id]
-      return next
-    })
+    setResults((current) =>
+      Object.fromEntries(Object.entries(current).filter(([key]) => key !== id))
+    )
   }
 
   const commit = () => {

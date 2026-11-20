@@ -8,7 +8,7 @@
 - 启动器图标换成自己画的对话气泡（蓝色对角渐变 + 白色圆角气泡），自适应前景与圆形图标各自一套；`ic_launcher_background` 从近白改成深蓝，避免白色前景看不见
 - 仓库里第一次能完整重建：新增 `android/build-apk.ps1`（与 `build-apk.sh` 步骤一致，给没有 Git Bash 的 Windows），两个脚本的工具链路径改成可用 `ANDROID_BUILD_TOOLS` / `ANDROID_JAR` / `JAVA_HOME` 覆盖，并在缺工具链或缺 `web/dist` 时直接报出缺的是哪个路径
 - `android/assets/**` 不再入库（那是构建产物），重建时由脚本从 `web/dist` 拷入
-- APK：`dsk-chat-0.3.10.apk`，2,030,945 字节，SHA-256 `7F195D11AFF745974C0B5437982ED857AE92955A10D3041AFE15541F1B8B7C91`
+- APK：`dsk-chat-0.3.10.apk`，2,030,945 字节，SHA-256 `E16B6278094A6F847B2C7A15CA6FC7DBDBBBCC74399B420D0D09A560BCAD3F8A`
 
 ## 0.3.9 — 隐私：数据去向、训练开关、本机数据
 
