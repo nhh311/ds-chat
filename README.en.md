@@ -74,7 +74,7 @@ DS Chat is a third-party client that turns DeepSeek's open API into a phone app:
 - Three chat modes plus four effort levels — `thinking: {type: enabled}` with `output_config.effort`, matching the official client (Off / Low / High / Max)
 - Streaming, collapsible reasoning ("thought for N seconds"), message versions (switch between regenerations), edit-and-resend, continue generating
 - Web search with citations: how many pages were searched and which were read; inline citations expand into source cards
-- Markdown, syntax highlighting, KaTeX, Mermaid diagrams (toggle back to source)
+- Markdown, syntax highlighting, LaTeX math (rendered by KaTeX), Mermaid diagrams (toggle back to source)
 
 ### Input
 
@@ -198,11 +198,7 @@ See [docs/PRIVACY.md](docs/PRIVACY.md) and the [DeepSeek privacy policy](https:/
 
 ## Changelog
 
-See [CHANGELOG.md](CHANGELOG.md). Last three releases:
-
-- **0.3.10** dropped the official marks from the UI and stopped shipping a launcher icon of its own; rebuilt from source
-- **0.3.9** new Privacy section in settings: where data goes, where the training toggle lives, local usage and one-tap clearing
-- **0.3.8** voice clean-up: the transcript goes through the model once — filler words out, punctuation in, homophones fixed
+See [CHANGELOG.md](CHANGELOG.md).
 
 ## Credits
 
