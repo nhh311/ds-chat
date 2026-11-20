@@ -1,13 +1,6 @@
-<p align="center">
-  <img src="screenshots/banner.jpg" alt="DS Chat" width="100%">
-</p>
+# DS Chat
 
-<h1 align="center">DS Chat</h1>
-
-<p align="center">
-  <b>一个 2 MB 的第三方聊天客户端</b><br>
-  自己填 API Key，直连 DeepSeek 的开放接口——顺便看清楚 token 花在了哪里
-</p>
+**一个 1.9 MB 的第三方聊天客户端**：自己填 API Key，直连 DeepSeek 的开放接口，顺便看清楚 token 花在了哪里。
 
 <p align="center">
   <a href="README.en.md">English</a> · <b>简体中文</b>
@@ -15,7 +8,7 @@
 
 <p align="center">
   <img alt="platform" src="https://img.shields.io/badge/Android-7.0%2B-3DDC84?logo=android&logoColor=white">
-  <img alt="apk size" src="https://img.shields.io/badge/APK-2.0%20MB-2563EB">
+  <img alt="apk size" src="https://img.shields.io/badge/APK-1.9%20MB-2563EB">
   <img alt="version" src="https://img.shields.io/badge/version-0.3.10-F59E0B">
   <img alt="license" src="https://img.shields.io/badge/license-MIT-111827">
   <img alt="stars" src="https://img.shields.io/github/stars/nhh311/ds-chat?logo=github">
@@ -26,7 +19,7 @@
 DS Chat 是一个**个人开发的第三方客户端**。它与杭州深度求索人工智能基础技术研究有限公司（DeepSeek）没有隶属、合作或背书关系，不是官方产品；不分发、不再打包任何官方安装包，界面也不是官方 App 的复刻。
 
 - **代码从哪来**：`web/` 是在 DeepSeek **开源**的 [chat-demo](https://github.com/deepseek-ai/chat-demo)（MIT）上重写的，Android 端是自己写的 WebView 壳。全部源码都在这个仓库里，可以逐行对照。
-- **商标怎么用**：名称里的 "DS" 只用来表明"这个软件连的是 DeepSeek 的接口"，属于描述性使用；"DeepSeek"、"深度求索" 及其鲸鱼标识归深度求索所有，本项目不主张任何权利。界面与图标里**没有**使用官方标识——0.3.10 起连首页的鲸鱼也删掉了，图标换成了一个中性的对话气泡。
+- **商标怎么用**：名称里的 "DS" 只用来表明"这个软件连的是 DeepSeek 的接口"，属于描述性使用；"DeepSeek"、"深度求索" 及其鲸鱼标识归深度求索所有，本项目不主张任何权利。界面里**没有**任何官方标识：0.3.10 起首页的鲸鱼已删除，也没有再补别的图标，README 里也不放任何图标或插画。
 - **你可以怎么用**：MIT 许可，可以 fork、改名、换图标、商用。如果重新发布，请换掉名称与图标，别让人误以为是官方产品。
 - **出问题找谁**：找这个仓库，不要找官方客服——官方没有参与这个项目。
 
@@ -47,7 +40,7 @@ DS Chat 是一个自己动手写的第三方客户端：不用自建后端、不
 | 项目 | 值 |
 | --- | --- |
 | 版本 | 0.3.10（versionCode 15） |
-| 安装包 | 2.0 MB，Android 7.0+（minSdk 24 / targetSdk 35） |
+| 安装包 | 1.9 MB，Android 7.0+（minSdk 24 / targetSdk 35） |
 | 模型 | Flash / V4 Pro，均为 1M 上下文 |
 | 协议 | Anthropic 兼容 Messages：`POST {服务地址}/anthropic/v1/messages` |
 | 前端 | React 18 + TypeScript + rspack，纯静态产物 4.3 MB |
@@ -66,10 +59,10 @@ DS Chat 是一个自己动手写的第三方客户端：不用自建后端、不
 | <img src="screenshots/16-usage-panel.png" width="230"> | <img src="screenshots/18-stats-panel.png" width="230"> | <img src="screenshots/27-privacy-mobile.png" width="230"> |
 | 缓存命中率、未缓存输入 / 缓存读取 / 输出、上下文占用 | 轮/步、模型用时、TTFT、TPS、上下文三段分布 | 哪些请求会离开手机、训练开关在哪、本机占用 |
 
-| 桌面端 | 扩展：技能与 MCP | 图标 |
-| :--: | :--: | :--: |
-| <img src="screenshots/04-desktop.png" width="420"> | <img src="screenshots/05-extras.png" width="420"> | <img src="screenshots/icon-512.png" width="110"> |
-| 宽屏是「边栏 + 对话」两栏，模式平铺在输入框里 | 技能可以导入 `.md` / JSON，MCP 填流式 HTTP 地址，可测连接 | 中性的对话气泡，不带任何官方标识 |
+| 桌面端 | 扩展：技能与 MCP |
+| :--: | :--: |
+| <img src="screenshots/04-desktop.png" width="440"> | <img src="screenshots/05-extras.png" width="440"> |
+| 宽屏是「边栏 + 对话」两栏，模式平铺在输入框里 | 技能可以导入 `.md` / JSON，MCP 填流式 HTTP 地址，可测连接 |
 
 > 截图来自移动端 824×1830、桌面端 2560×1800 视口下的真实渲染，没有做设计稿美化。
 
@@ -109,12 +102,12 @@ DS Chat 是一个自己动手写的第三方客户端：不用自建后端、不
 
 ## 安装
 
-从 [Releases](https://github.com/nhh311/ds-chat/releases) 下 `ds-chat-0.3.10.apk`（2.0 MB）：
+从 [Releases](https://github.com/nhh311/ds-chat/releases) 下 `ds-chat-0.3.10.apk`（1.9 MB）：
 
 ```
 文件名    ds-chat-0.3.10.apk
-大小      2,030,945 字节
-SHA-256   E16B6278094A6F847B2C7A15CA6FC7DBDBBBCC74399B420D0D09A560BCAD3F8A
+大小      1,959,838 字节
+SHA-256   64DF03F6CA95027ECD57BDB9F8CBB7297CFBC9C7877CFFE6D5FAF8AFAB010FA9
 ```
 
 - Android 7.0（API 24）及以上；targetSdk 35
@@ -210,7 +203,7 @@ App 只会发四类请求，全部发给你填的服务地址：
 
 见 [CHANGELOG.md](CHANGELOG.md)。最近三版：
 
-- **0.3.10** 去掉首页与图标里的官方标识，换成一个中性的对话气泡图标（仓库里重新出包）
+- **0.3.10** 去掉界面里的官方标识，也不再自带启动器图标（仓库里重新出包）
 - **0.3.9** 设置里新增"隐私"分组：数据去了哪里、训练开关在哪、本机占用与一键清除
 - **0.3.8** 语音整理：转写完先让模型过一遍，去口头语、补标点、改同音错字
 
@@ -218,7 +211,6 @@ App 只会发四类请求，全部发给你填的服务地址：
 
 - 前端源自 DeepSeek 开源的 [chat-demo](https://github.com/deepseek-ai/chat-demo)（MIT），界面与交互的底子来自那里
 - "DeepSeek"、"深度求索" 名称与鲸鱼标识归杭州深度求索所有；本项目不使用这些标识，仅以文字指明所连的接口
-- 头图由 MiniMax-H3-Image 生成
 
 ## 许可
 

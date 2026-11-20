@@ -55,14 +55,14 @@ powershell -ExecutionPolicy Bypass -File .\build-apk.ps1
 脚本按顺序做这些事：
 
 1. `web/dist` 拷进 `build/assetsroot/assets/`，页面从 `file:///android_asset/index.html` 打开
-2. `aapt2 compile` 编译 `res/` 成 `.flat`，`aapt2 link` 生成不含 assets 的 `base.apk`（minSdk 24 / targetSdk 35、versionCode / versionName 取自脚本变量）
+2. `aapt2 compile` 编译 `res/` 成 `.flat`，`aapt2 link` 生成不含 assets 的 `base.apk`（minSdk 24 / targetSdk 35、versionCode / versionName 取自脚本变量）。0.3.10 起仓库不再自带启动器图标，`res/` 是空的，脚本检测到没有资源就跳过 compile、link 也不带 `-R`
 3. `javac` 编译 `java/com/dskchat/app/*.java`
 4. `d8` 转 dex
 5. `jar --update` 把 `assets/` 与 `classes.dex` 塞进 APK
 6. `zipalign -p 4` 对齐，`apksigner` 用 `debug.keystore` 签名
 7. `apksigner verify --print-certs` 打印证书并 `ls -l` 产物
 
-产物在 `android/build/dsk-chat-0.3.10.apk`（2,030,945 字节，SHA-256 `E16B6278094A6F847B2C7A15CA6FC7DBDBBBCC74399B420D0D09A560BCAD3F8A`；`build/` 不入库）。
+产物在 `android/build/dsk-chat-0.3.10.apk`（1,959,838 字节，SHA-256 `64DF03F6CA95027ECD57BDB9F8CBB7297CFBC9C7877CFFE6D5FAF8AFAB010FA9`；`build/` 不入库）。
 
 ### 工具链路径
 

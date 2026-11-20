@@ -33,17 +33,23 @@ $null = New-Item -ItemType Directory -Force build\classes, build\dex, build\apk,
 # 1. 前端产物进 assets
 Copy-Item -Recurse -Force ..\web\dist\* build\assetsroot\assets\
 
-# 2. 资源编译成 .flat 包
-Invoke-Checked "$BT\aapt2.exe" @('compile', '--dir', 'res', '-o', 'build/res/res.zip')
-
-# 3. 清单 + 资源链接
-Invoke-Checked "$BT\aapt2.exe" @(
-  'link', '-o', 'build/apk/base.apk', '-I', $AJ,
-  '--manifest', 'AndroidManifest.xml', '-R', 'build/res/res.zip',
+# 2. 资源编译成 .flat 包（res/ 为空时跳过——0.3.10 起不再自带图标，就没有资源了）
+$resFiles = @(Get-ChildItem -Recurse -File res -ErrorAction SilentlyContinue)
+$linkArgs = @('link', '-o', 'build/apk/base.apk', '-I', $AJ, '--manifest', 'AndroidManifest.xml')
+if ($resFiles.Count -gt 0) {
+  Invoke-Checked "$BT\aapt2.exe" @('compile', '--dir', 'res', '-o', 'build/res/res.zip')
+  $linkArgs += @('-R', 'build/res/res.zip')
+} else {
+  Write-Host 'res/ 为空，跳过资源编译'
+}
+$linkArgs += @(
   '--min-sdk-version', '24', '--target-sdk-version', '35',
   '--version-code', $VERSION_CODE, '--version-name', $VERSION_NAME,
   '--auto-add-overlay'
 )
+
+# 3. 清单（+ 资源）链接
+Invoke-Checked "$BT\aapt2.exe" $linkArgs
 
 # 4. 编译 Java（目标 8；源码 UTF-8；android.jar 没有 LambdaMetafactory，代码里不用 lambda）
 Invoke-Checked "$JDK\bin\javac.exe" @(

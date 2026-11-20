@@ -28,15 +28,22 @@ mkdir -p build/classes build/dex build/apk build/assetsroot/assets build/res
 # 1. 前端产物进 assets，页面从 file:///android_asset/index.html 打开
 cp -r ../web/dist/. build/assetsroot/assets/
 
-# 2. 启动器图标等资源先编译成 .flat（aapt2 compile），再由 link 的 -R 合并
-"$BT/aapt2.exe" compile --dir res -o build/res/res.zip
+# 2. 资源先编译成 .flat（aapt2 compile），再由 link 的 -R 合并。
+#    res/ 为空时跳过——0.3.10 起不再自带启动器图标，就没有资源了。
+RES_ARG=""
+if [ -n "$(ls -A res 2>/dev/null)" ]; then
+  "$BT/aapt2.exe" compile --dir res -o build/res/res.zip
+  RES_ARG="-R build/res/res.zip"
+else
+  echo "res/ 为空，跳过资源编译"
+fi
 
-# 3. 清单 + 资源打包（不含 assets）
+# 3. 清单（+ 资源）打包（不含 assets）
 "$BT/aapt2.exe" link \
   -o build/apk/base.apk \
   -I "$AJ" \
   --manifest AndroidManifest.xml \
-  -R build/res/res.zip \
+  $RES_ARG \
   --min-sdk-version 24 \
   --target-sdk-version 35 \
   --version-code "$VERSION_CODE" \
